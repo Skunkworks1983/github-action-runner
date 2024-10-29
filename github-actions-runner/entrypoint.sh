@@ -8,4 +8,6 @@ REGISTRATION_TOKEN="$(curl -X POST -fsSL \
   "$REGISTRATION_TOKEN_API_URL" \
   | jq -r '.token')"
 
+systemctl start docker
+
 ./config.sh --url $GH_URL --token $REGISTRATION_TOKEN --unattended --ephemeral && ./run.sh
